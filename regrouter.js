@@ -24,4 +24,19 @@ router.get("/", function (req, res) {
     });
 });
 
+router.get("/ins/:id/:name/:email/:mobile", function (req, res) {
+    con.query("insert into register values ("+req.params.id+",'"+req.params.name+"','"+req.params.email+"','"+req.params.mobile+"')", (e, r, f) => {
+        if (e) {
+            console.log(e.stack);
+        }
+        res.json(r);
+        // r.forEach(element => {
+        //     for (const nam of ["id","name","email","mobile"]) {
+        //         console.log(element[nam]);
+        //         console.log("*".repeat(50));
+        //     }
+        // });
+    });
+});
+
 module.exports = router;
